@@ -1,0 +1,43 @@
+.screen {
+  height: 50%;
+  width: 50%;
+  margin: 30px auto;
+  font-family: Helvetica;
+  text-align: center;
+  padding: 10px;
+}
+
+.screen-container {
+}
+
+.content {
+  display: table;
+  min-height: 300px;
+  width: 100%;
+  position: relative;
+  top: 50%;
+  margin: auto;
+}
+.page-title {
+  color: white;
+  background: black;
+}
+
+.cont-button {
+  background: black;
+  display: block;
+  margin: 5px 0;
+  color: white;
+  height: auto;
+  width: auto;
+}
+
+p {
+  vertical-align: middle;
+  text-align: center;
+  margin: 0;
+  display: table-cell;
+}
+body {
+  margin: 0;
+}

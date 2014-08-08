@@ -4,8 +4,8 @@
   <!-- JS --> 
 	<script type='text/javascript' src="./js/jquery-2.1.1.min.js"></script>
   <script type='text/javascript' src="./js/underscore-min.js"></script>
-  <script type='text/javascript' src"./js/index.js"></script>
-  <script type='text/javascript' src"./js/experiment.js"></script>
+  <script type='text/javascript' src="./js/index.js"></script>
+  <script type='text/javascript' src="./js/experiment.js"></script>
   <script type='text/javascript' src="./js/handlebars-v1.3.0.js"></script>
 
   <!-- CSS -->
@@ -15,8 +15,11 @@
   <div class="screen-container">
   	<div id="view" class="screen">
       <div class="page-title"><h1>Title</h1></div>
-      <div id="content-text" class="content"><p>When instructed, press start to begin.</p></div>
-      <div type="button" class="cont-button" onclick="index.next()">
+      <div class="content">
+        <div id="content-text"></div>
+        <div id="content-instructions"><p>When instructed, press start to begin.</p></div>
+      </div>
+      <div type="button" id="cont-button" class="button" onclick="next()">
         <h3>Start</h3>
       </div>
     </div>

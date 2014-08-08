@@ -9,7 +9,9 @@
 
 .screen-container {
 }
-
+#content-text {
+  text-align: left;
+}
 .content {
   display: table;
   min-height: 300px;
@@ -23,7 +25,7 @@
   background: black;
 }
 
-.cont-button {
+.button {
   background: black;
   display: block;
   margin: 5px 0;
@@ -34,7 +36,6 @@
 
 p {
   vertical-align: middle;
-  text-align: center;
   margin: 0;
   display: table-cell;
 }

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- JS --> 
+  <script type='text/javascript' src="./js/jquery-2.1.1.min.js"></script>
+  <script type='text/javascript' src="./js/underscore-min.js"></script>
+  <script type='text/javascript' src="./js/index.js"></script>
+  <script type='text/javascript' src="./js/experiment.js"></script>
+  <script type='text/javascript' src="./js/handlebars-v1.3.0.js"></script>
+
+  <!-- CSS -->
+  <link href="./css/index.css" rel="stylesheet">
+</head>
+<body>
+  <form id="prescreen-1">
+    <b>Please answer the following questions.</b><br><br>
+    What is your major? <input type="text" name="q1"><br><br>
+    What is your gender? <input type="text" name="q2"><br><br>
+    What is your natural hair color?
+      <select name="q3">
+        <option value="empty" selected>Select</option>
+        <option value="blonde">Blonde</option>
+        <option value="brown">Brown</option>
+        <option value="auburn">Auburn</option>
+        <option value="red">Red</option>
+        <option value="black">Black</option>
+      </select><br><br>
+    What is your eye color? 
+      <select name="q4">
+        <option value="empty" selected>Select</option>
+        <option value="brown">Brown</option>
+        <option value="hazel">Hazel</option>
+        <option value="green">Green</option>
+        <option value="blue">Blue</option>
+        <option value="gray">Gray</option>
+      </select><br><br>
+    Which image do you like more? <input type="text" name="q5"><br><br>
+    Images go here! <br><br>
+    <b>Please answer the following questions about your personality.</b>
+    <ol>
+      <li>You are almost never late for your appointments. <input type="radio" name="p1" value="yes">Yes<input type="radio" name="p1" value="no">No<br><br>
+      <li>You easily understand new theoretical principles. <input type="radio" name="p2" value="yes">Yes<input type="radio" name="p2" value="no">No<br><br>
+      <li>You avoid being bound by obligations. <input type="radio" name="p3" value="yes">Yes<input type="radio" name="p3" value="no">No<br><br>
+      <li>It&#39;s essential for you to try things with your own hands. <input type="radio" name="p4" value="yes">Yes<input type="radio" name="p4" value="no">No<br><br>
+      <li>You take pleasure in putting things in order. <input type="radio" name="p5" value="yes">Yes<input type="radio" name="p5" value="no">No<br><br>
+      <li>You are always looking for opportunities. <input type="radio" name="p6" value="yes">Yes<input type="radio" name="p6" value="no">No<br><br>
+    </ol>
+  </form>
+</body>
+</html>

@@ -13,16 +13,24 @@
 </head>
 <body>
   <div class="screen-container">
+    <div id="top-nav"></div>
   	<div id="view" class="screen">
+
+      <!-- Title screen -->
       <div class="page-title"><h1>Title</h1></div>
+
+      <!-- Content -->
       <div class="content">
         <div id="content-text"></div>
-        <div id="content-instructions"><p>When instructed, press start to begin.</p></div>
+        <div id="content-instructions"><p>When instructed, press Next to begin.</p></div>
       </div>
-      <div type="button" id="cont-button" class="button" onclick="next()">
-        <h3>Start</h3>
-      </div>
+
+      <!-- Navigation buttons -->
+      <form class="buttons">
+        <input type="button" value="Begin" onclick="next(0)" id="button-next" class="button">
+      </form>
     </div>
+    <div id="bottom-nav"></div>
   </div>
 </body>
 </html>

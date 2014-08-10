@@ -21,28 +21,45 @@ var next = function(id) {
         $('#content-instructions').hide();
         // document.getElementById('content-text').innerHTML = consent;
         document.getElementById('content-text').innerHTML = '<object type="text/html" style="width:700px;height:500px" data="consent.html" ></object>';
-        document.getElementById('button-next').value = "Continue";
+        // document.getElementById('button-next').value = "Continue";
         document.getElementById('button-next').onclick = function() {next(1)};
         break;
-      case 1: // Display prescreen screen 1
+      case 1: // Display prescreen
         console.log("Displaying prescreen screen");
+        document.getElementById('page-title').innerHTML = "<h1>PRE-SCREEN SURVEY</h1>"
+        // document.getElementById('button-next').value = "Next";
         $('#content-text').empty();
         document.getElementById('content-text').innerHTML = '<object type="text/html" style="width:700px;height:500px" data="prescreen.html" ></object>';
         document.getElementById('button-next').onclick = function() {next(2)};        
         break;
-      case 2: // Display loading screen
+      case 2: // Display loading page
         console.log("Displaying loading screen");
         $('#content-text').empty();
+        $('#page-title').empty();
         $('#content-instructions').show();
+        $('#button-next').hide();
         document.getElementById('content-instructions').innerHTML = '<object type="text/html" style="width:700px;" data="postPrescreen.html" ></object>';
-        document.getElementById('button-next').onclick = function() {next(3)};
+        setTimeout(function() {
+          next(3)}, 2000);
         break;
       case 3: // Display pre-screen results screen
         console.log("Displaying pre-screen results screen");
+        $('#content-instructions').empty();
+        $('#button-next').show();
+        document.getElementById('page-title').innerHTML = "<h1>PRE-SCREEN RESULTS</h1>"
+        switch (condition.substring(0,4)) {
+          case "high":
+            document.getElementById('content-instructions').innerHTML = '<object type="text/html" style="width:700px;" data="groupPlacementHigh.html" ></object>';
+            break; 
+          default:
+            document.getElementById('content-instructions').innerHTML = '<object type="text/html" style="width:700px;" data="groupPlacementLow.html" ></object>';
+        }
+        console.log(this.condition);
         document.getElementById('button-next').onclick = function() {next(4)};
         break;
-      case 4: // Display group placement screen
-        console.log("Displaying group placement screen");
+      case 4: // Display group placement intro screen
+        console.log("Displaying group placement intro screen");
+        document.getElementById('content-instructions').innerHTML = '<object type="text/html" style="width:700px;height:500px" data="groupIntro.html" ></object>';
         document.getElementById('button-next').onclick = function() {next(5)};
         break;
       case 5: // Display members info screen

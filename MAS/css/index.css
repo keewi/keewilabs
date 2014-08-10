@@ -35,7 +35,6 @@ p {
 }
 #content-instructions {
   height: auto;
-  vertical-align: middle;
   margin: 150px 0;
   text-align: center;
 }
@@ -47,14 +46,15 @@ p {
   top: 50%;
   margin: auto;
 }
-.page-title {
+#page-title {
   color: black;
 }
 
 .buttons {
-  position: absolute;
+  position: fixed;
   margin: 0 auto;
   left: 48.5%;
+  bottom: 70px;
 }
 .button {
   background: black;

@@ -5,6 +5,7 @@
 	<script type='text/javascript' src="./js/jquery-2.1.1.min.js"></script>
   <script type='text/javascript' src="./js/underscore-min.js"></script>
   <script type='text/javascript' src="./js/index.js"></script>
+  <script type='text/javascript' src="./js/condition.js"></script>
   <script type='text/javascript' src="./js/experiment.js"></script>
   <script type='text/javascript' src="./js/handlebars-v1.3.0.js"></script>
 
@@ -14,22 +15,21 @@
 <body>
   <div class="screen-container">
     <div id="top-nav"></div>
-  	<div id="view" class="screen">
 
-      <!-- Title screen -->
-      <div class="page-title"><h1>Title</h1></div>
-
-      <!-- Content -->
+    <!-- Content -->
+    <div id="view" class="screen">
+    <!-- Title screen -->
+    <div id="page-title"><h1>&nbsp</h1></div>
       <div class="content">
         <div id="content-text"></div>
-        <div id="content-instructions"><p>When instructed, press Next to begin.</p></div>
+        <div id="content-instructions"><h2>When instructed, press Next to begin.</h2></div>
       </div>
-
-      <!-- Navigation buttons -->
-      <form class="buttons">
-        <input type="button" value="Begin" onclick="next(0)" id="button-next" class="button">
-      </form>
+    <!-- Navigation buttons -->
+    <form class="buttons">
+      <input type="button" value="Next" onclick="next(0)" id="button-next" class="button">
+    </form>
     </div>
+
     <div id="bottom-nav"></div>
   </div>
 </body>

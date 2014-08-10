@@ -1,22 +1,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <!-- JS --> 
-  <script type='text/javascript' src="./js/jquery-2.1.1.min.js"></script>
-  <script type='text/javascript' src="./js/underscore-min.js"></script>
-  <script type='text/javascript' src="./js/index.js"></script>
-  <script type='text/javascript' src="./js/experiment.js"></script>
-  <script type='text/javascript' src="./js/handlebars-v1.3.0.js"></script>
-
   <!-- CSS -->
   <link href="./css/index.css" rel="stylesheet">
 </head>
 <body>
   <form id="prescreen-1">
-    <b>Please answer the following questions.</b><br><br>
-    What is your major? <input type="text" name="q1"><br><br>
-    What is your gender? <input type="text" name="q2"><br><br>
-    What is your natural hair color?
+    <b>Please answer the following pre-screening questions.</b><br><br>
+    <ol>
+      <li>What is your major? <input type="text" name="q1"></li><br>
+      <li>What is your gender? <input type="text" name="q2"></li><br>
+      <li>What is your natural hair color?
       <select name="q3">
         <option value="empty" selected>Select</option>
         <option value="blonde">Blonde</option>
@@ -24,8 +18,8 @@
         <option value="auburn">Auburn</option>
         <option value="red">Red</option>
         <option value="black">Black</option>
-      </select><br><br>
-    What is your eye color? 
+      </select></li><br>
+    <li>What is your eye color? 
       <select name="q4">
         <option value="empty" selected>Select</option>
         <option value="brown">Brown</option>
@@ -33,7 +27,7 @@
         <option value="green">Green</option>
         <option value="blue">Blue</option>
         <option value="gray">Gray</option>
-      </select><br><br>
+      </select></li><br></ol>
     Which image do you like more? <input type="text" name="q5"><br><br>
     Images go here! <br><br>
     <b>Please answer the following questions about your personality.</b>

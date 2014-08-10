@@ -7,11 +7,16 @@
   <script type='text/javascript' src="./js/index.js"></script>
   <script type='text/javascript' src="./js/experiment.js"></script>
   <script type='text/javascript' src="./js/handlebars-v1.3.0.js"></script>
+  <script> // Waits for 15 seconds for other participants to finish << test this!
+    setTimeout(function() {
+      document.getElementById('postscreen').innerHTML = "<h2>Processing Pre-screen Survey results...</h2>";
+    }, 1000);
+  </script>
 
   <!-- CSS -->
   <link href="./css/index.css" rel="stylesheet">
 </head>
 <body>
-  <b><h2>You&#39;ve completed the pre-screen! Please wait while the other participants complete their surveys.</h2></b>
+  <div id="postscreen" style="text-align:center;"><h2><b>You&#39;ve completed the pre-screen! Please wait while the other participants complete their surveys.</b></h2><div>
 </body>
 </html>

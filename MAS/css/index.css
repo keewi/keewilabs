@@ -48,19 +48,20 @@ p {
 }
 #page-title {
   color: black;
+  min-height: 30px;
 }
 
 .buttons {
   position: fixed;
   margin: 0 auto;
-  left: 48.5%;
   bottom: 70px;
 }
 .button {
   background: black;
-  display: block;
-  margin: 5px 0;
+  margin: 5px auto;
+  position: relative;
+  left: 302.5px;
   color: white;
-  height: auto;
-  width: auto;
+  height: 24px;
+  width: 100px;
 }

@@ -27,15 +27,15 @@ p {
   position: fixed;
   bottom: 0;
 }
-
 .screen-container {
 }
+
 #content-text {
   text-align: left;
 }
 #content-instructions {
-  height: auto;
-  margin: 150px 0;
+/*  height: auto;
+*/  margin: 150px 0;
   text-align: center;
 }
 .content {
@@ -46,6 +46,7 @@ p {
   top: 50%;
   margin: auto;
 }
+
 #page-title {
   color: black;
   min-height: 30px;

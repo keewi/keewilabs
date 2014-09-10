@@ -42,7 +42,8 @@ var progress = {
 	page: 0,
 	stage: 0,
 	gameID: 0,
-	trialsLeft: 0
+	trialsLeft: 0,
+	practice: false
 };
 
 var clearScreen2 = function(nextScreen) {
@@ -51,6 +52,13 @@ var clearScreen2 = function(nextScreen) {
   $('#content-text').empty();
   progress.page = nextScreen;
   document.getElementById('button-next').onclick = function() { runActivity() };
+};
+
+var clearScreen4 = function(nextScreen) {
+  $('#page-title').empty();
+  $('#content-instructions').empty();
+  $('#content-text').empty();
+  document.getElementById('button-next').onclick = function() { gameplay(nextScreen) };
 };
 
 var gameInstructions = function() {
@@ -65,13 +73,7 @@ var practicePrep = function() {
 	document.getElementById('page-title').innerHTML = "<h1>PRACTICE ROUND</h1>";
     document.getElementById('content-instructions').innerHTML = '<object type="text/html" style="width:700px;margin:-11px;" data="practicePrep.html" ></object>';
 };
-var gameplay = function(page) {
-	console.log("Trials left: " + progress.trialsLeft);
-	scoredResult();
-	//do gameplay stuff here
-	//return result
-	//go back to case 104
-};
+
 var scoredPrep = function() {
 	showI();
 	document.getElementById('page-title').innerHTML = "<h1>SCORED ROUNDS</h1>";
@@ -81,6 +83,40 @@ var scoredResult = function() {
 	showI();
 	document.getElementById('page-title').innerHTML = "<h1>ROUND RESULTS</h1>";
     document.getElementById('content-instructions').innerHTML = '<object type="text/html" style="width:700px;margin:-20px;" data="roundResults.html" ></object>';
+};
+var gamePrep = function() {
+	//display the + screen
+};
+
+var plusScreen = function() {
+
+};
+
+var gameScreen = function(id) {
+	showT();
+	document.getElementById('content-text').innerHTML = '<img src="img/dots1.png">';
+};
+
+var gameplay = function(page, practice) {
+	console.log("Trials left: " + progress.trialsLeft);
+	switch (page) {
+		case 300: //gameScreen
+			clearScreen4(301);
+			gameScreen();
+			break;
+		case 301:
+			if (progress.practice) {
+				runActivity(103);
+			}
+			else {
+				clearScreen2(104);
+				scoredResult();
+			}
+			break;
+	}
+	//do gameplay stuff here
+	//return result
+	//go back to case 104
 };
 var pDilemma = function() {
 	showI();
@@ -102,20 +138,22 @@ var runActivity = function () {
 		case 101: //practice round prep
 			clearScreen2(102);
 			practicePrep();
+			progress.practice = true;
 			break;
 		case 102: //practice round
 			clearScreen2(103);
-			gameplay();
+			gameplay(300);
 			break;
 		case 103: //scored rounds prep
 			clearScreen2(104);
 			scoredPrep();
+			progress.practice = false;
 			break;
 		case 104: //scored rounds process
 			if (progress.trialsLeft > 0) {
 				progress.trialsLeft -= 1;
 				clearScreen2(104);
-				gameplay(301);
+				gameplay(300);
 			}
 			else {
 				progress.page = 105;

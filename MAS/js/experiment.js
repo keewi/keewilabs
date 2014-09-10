@@ -38,104 +38,100 @@ var condition = {
   activityOrder: randomShuffle(activities)
 };
 
-var results = {
-	rel1: [],
-	rel2: [],
-	irr1: [],
-	irr2: [],
-	prescreen: [],
-	
+var progress = {
+	page: 0,
+	stage: 0,
+	gameID: 0,
+	trialsLeft: 0
 };
-var clearScreen2 = function(nextScreen, stage, id, trialsLeft) {
+
+var clearScreen2 = function(nextScreen) {
   $('#page-title').empty();
   $('#content-instructions').empty();
   $('#content-text').empty();
-  if (nextScreen < 100) {
-    document.getElementById('button-next').onclick = function() { next(nextScreen) };
-  } else if (nextScreen < 200) {
-    document.getElementById('button-next').onclick = function() { runActivity(nextScreen, stage, id, trialsLeft) };
-  }
+  progress.page = nextScreen;
+  document.getElementById('button-next').onclick = function() { runActivity() };
 };
 
-var gameInstructions = function(stage) {
+var gameInstructions = function() {
 	showI();
 	document.getElementById('page-title').innerHTML = "<h1>INSTRUCTIONS</h1>";
-	var s = '<object type="text/html" style="width:700px;height:120px;margin:0;" data="inst'+stage.toString()+'.html" ></object>';
+	var s = '<object type="text/html" style="width:700px;height:120px;margin:0;" data="inst'+progress.stage.toString()+'.html" ></object>';
 	document.getElementById('content-instructions').innerHTML = s;
 };
 
-var practicePrep = function(stage) {
+var practicePrep = function() {
 	showI();
 	document.getElementById('page-title').innerHTML = "<h1>PRACTICE ROUND</h1>";
     document.getElementById('content-instructions').innerHTML = '<object type="text/html" style="width:700px;margin:-11px;" data="practicePrep.html" ></object>';
 };
-var gameplay = function(stage, trial) {
-	console.log(trial);
+var gameplay = function(page) {
+	console.log("Trials left: " + progress.trialsLeft);
+	scoredResult();
 	//do gameplay stuff here
 	//return result
 	//go back to case 104
 };
-var scoredPrep = function(stage) {
+var scoredPrep = function() {
 	showI();
 	document.getElementById('page-title').innerHTML = "<h1>SCORED ROUNDS</h1>";
     document.getElementById('content-instructions').innerHTML = '<object type="text/html" style="width:700px;margin:-20px;" data="scoredPrep.html" ></object>';
 };
-var scoredResult = function(stage) {
+var scoredResult = function() {
 	showI();
 	document.getElementById('page-title').innerHTML = "<h1>ROUND RESULTS</h1>";
-    document.getElementById('content-instructions').innerHTML = '<object type="text/html" style="width:700px;margin:-20px;" data="scoredPrep.html" ></object>';
+    document.getElementById('content-instructions').innerHTML = '<object type="text/html" style="width:700px;margin:-20px;" data="roundResults.html" ></object>';
 };
-var pDilemma = function(stage) {
+var pDilemma = function() {
 	showI();
-	document.getElementById('page-title').innerHTML = "<h1>ROUND RESULTS</h1>";
-    document.getElementById('content-instructions').innerHTML = '<object type="text/html" style="width:700px;margin:-20px;" data="scoredPrep.html" ></object>';
+	document.getElementById('page-title').innerHTML = "<h1>OVERALL RESULTS</h1>";
+    document.getElementById('content-instructions').innerHTML = '<object type="text/html" style="width:700px;margin:-20px;" data="pDilemma.html" ></object>';
 };
 
-var runActivity = function (page, stage, id, trialsLeft) {
+var runActivity = function () {
 	/* Page: which page in the activity it is
 	** stage: which game it is
-	** id: how many games you've done + 1 (which game youre on)
+	** gameID: how many games you've done + 1 (which game youre on)
 	** trialsLeft: trials left 0 < x < 11
 	*/
-	var trials = 10-trialsLeft; // 0 <= x < 10
-	switch (page) {
+	switch (progress.page) {
 		case 100: //game instructions
-			clearScreen2(101, stage, id, trialsLeft);
-			gameInstructions(stage);
+			clearScreen2(101);
+			gameInstructions();
 			break;
 		case 101: //practice round prep
-			clearScreen2(102, stage, id, trialsLeft);
-			practicePrep(stage);
+			clearScreen2(102);
+			practicePrep();
 			break;
 		case 102: //practice round
-			clearScreen2(103, stage, id, trialsLeft);
-			gameplay(stage, trials);
+			clearScreen2(103);
+			gameplay();
 			break;
 		case 103: //scored rounds prep
-			clearScreen2(104, stage, id, trialsLeft);
-			scoredPrep(stage);
+			clearScreen2(104);
+			scoredPrep();
 			break;
 		case 104: //scored rounds process
-			if (trialsLeft > 0) {
-				trialsLeft -= 1;
-				clearScreen2(104, stage, id, trialsLeft);
-				gameplay(stage, trials);
+			if (progress.trialsLeft > 0) {
+				progress.trialsLeft -= 1;
+				clearScreen2(104);
+				gameplay(301);
 			}
 			else {
+				progress.page = 105;
 				console.log("Finished trials");
-				runActivity(105, stage, id, trialsLeft);
+				runActivity();
 			}
 			break;
 		case 105: //summary of rounds and pdilemma
-			clearScreen2(106, stage, id, trialsLeft);
-			console.log("old id is "+id);
+			clearScreen2(106);
 			console.log("pdilemma!");
-			pDilemma(stage);
+			pDilemma();
 			break;
 		case 106: //end
 			console.log("done!!");
-			id += 1;
-			runActivities(id);
+			progress.gameID += 1;
+			runActivities();
 			break;
 	}
 };

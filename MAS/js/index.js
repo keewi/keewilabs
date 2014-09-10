@@ -1,6 +1,14 @@
 var $;
 var Handlebars;
 var testing = true;
+var results = {
+  prescreen: [],
+  rel1: [],
+  rel2: [],
+  irr1: [],
+  irr2: [],
+  surveyResponses: []
+};
 
 var clearScreen = function(nextScreen) {
   $('#page-title').empty();
@@ -14,22 +22,28 @@ var clearScreen = function(nextScreen) {
 var showI = function () {
   $('#content-instructions').show();  
   $('#content-text').hide();
-}
+};
 var showT = function () {
   $('#content-instructions').hide();  
   $('#content-text').show();
-}
+};
 
-var runHelper = function(id) {
-  currActivity = condition.activityOrder[id];
-  var done = runActivity(100, currActivity);
-}
+var runActivities = function() {
+  console.log("starting activity " + progress.gameID);
+  if (progress.gameID > 3) { console.log("Done with all the activities!"); next(7); return; }
+  currActivity = condition.activityOrder[progress.gameID];
+  progress.page = 100;
+  progress.stage = currActivity;
+  progress.trialsLeft = 10;
+  if (testing) { progress.trialsLeft = 2; }
+  runActivity();
+};
 
-var runActivities = function(id) {
-  console.log("starting activity " + id);
-  if (id > 3) { return true; }
-  currActivity = condition.activityOrder[id];
-  runActivity(100, currActivity, id, 10);
+var start = function(id) {
+  showI();
+  document.getElementById('page-title').innerHTML = "";
+  document.getElementById('content-instructions').innerHTML = '<h2>When instructed, press Next to begin.</h2>';
+  document.getElementById('button-next').onclick = function() { next(0); };
 };
 
 var next = function(id) {
@@ -78,11 +92,21 @@ var next = function(id) {
         document.getElementById('page-title').innerHTML = "<h1>GROUP ASSIGNMENT</h1>" //is this the right word? look up
         document.getElementById('content-text').innerHTML = '<object type="text/html" style="width:700px;height:400px" data="groupInfo.html" ></object>';
         break;
-      case 6: // should a group cohesion task go here?
-        runActivities(0);
+      case 6: // gameplay
+        if (testing) { progress.gameID = 3; }
+        runActivities();
         break;
-      case 7:
-        //experiments go here!
+      case 7: // surveys!!!
+        console.log("surveys");
+        runSurveys(0);
+        break;
+      case 8: //debrief
+        clearScreen(9);
+        showI();
+        document.getElementById('page-title').innerHTML = "<h1>DEBRIEF</h1>";
+        var s = '<object type="text/html" style="width:700px;height:120px;margin:0;" data="debrief.html" ></object>';
+        document.getElementById('content-instructions').innerHTML = s;
+        break;
       default:
         console.log("404");
 

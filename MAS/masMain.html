@@ -6,6 +6,7 @@
   <script type='text/javascript' src="./js/underscore-min.js"></script>
   <script type='text/javascript' src="./js/index.js"></script>
   <script type='text/javascript' src="./js/experiment.js"></script>
+  <script type='text/javascript' src="./js/surveys.js"></script>
   <script type='text/javascript' src="./js/handlebars-v1.3.0.js"></script>
 
   <!-- CSS -->
@@ -18,17 +19,17 @@
     <!-- Screen -->
     <div id="view" class="screen">
       <!-- Title screen -->
-      <div id="page-title"><h1>&nbsp</h1></div>
+      <div id="page-title"><h1>PARTICIPANT INFORMATION</h1></div>
 
       <!-- Content -->
       <div class="content">
         <div id="content-text"></div>
-        <div id="content-instructions"><h2>When instructed, press Next to begin.</h2></div>
+        <div id="content-instructions"></div>
       </div>
 
       <!-- Navigation buttons -->
       <form class="buttons">
-        <input type="button" value="Next" onclick="next(0)" id="button-next" class="button">
+        <input type="button" value="Next" onclick="start(0);" id="button-next" class="button">
       </form>
     </div>
 

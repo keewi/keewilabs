@@ -1,6 +1,7 @@
 var agencyConditions = ["low", "high"];
 var gameConditions = ["Rel", "Irr", "Both", "Neither"];
 var activities = [0,1,2,3];
+var t = 500;
 if(testing) { activities = [0,0,0,0]; }
 /* Activities
 ** 0: Rel1
@@ -89,22 +90,33 @@ var gamePrep = function() {
 };
 
 var plusScreen = function() {
-
+	showT();
+    $('#button-next').hide();
+	document.getElementById('content-text').innerHTML = '<img src="img/plus.png">';
+	if (!testing) { t=2000; }
+	setTimeout(function() { gameplay(301) }, t);
 };
 
-var gameScreen = function(id) {
+var gameScreen = function() {
 	showT();
+    $('#button-next').hide();
 	document.getElementById('content-text').innerHTML = '<img src="img/dots1.png">';
+	if (!testing) { t=2000; }
+	setTimeout(function() { gameplay(302) }, t);
 };
 
 var gameplay = function(page, practice) {
 	console.log("Trials left: " + progress.trialsLeft);
 	switch (page) {
-		case 300: //gameScreen
-			clearScreen4(301);
-			gameScreen();
+		case 300:
+			plusScreen();
 			break;
 		case 301:
+			clearScreen4();
+			gameScreen();
+			break;
+		case 302:
+		    $('#button-next').show();
 			if (progress.practice) {
 				runActivity(103);
 			}

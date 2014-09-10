@@ -23,13 +23,19 @@
 
       <!-- Content -->
       <div class="content">
-        <div id="content-text"></div>
+        <div id="content-text">
+          <form id="pInfo">
+          <ol>
+            <li>Participant ID: <input type="text" name="id"></li>
+          </ol>
+          </form>
+        </div>
         <div id="content-instructions"></div>
       </div>
 
       <!-- Navigation buttons -->
       <form class="buttons">
-        <input type="button" value="Next" onclick="start(0);" id="button-next" class="button">
+        <input type="button" value="Next" onclick="start();" id="button-next" class="button">
       </form>
     </div>
 

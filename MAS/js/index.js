@@ -39,7 +39,7 @@ var runActivities = function() {
   runActivity();
 };
 
-var start = function(id) {
+var start = function() {
   showI();
   document.getElementById('page-title').innerHTML = "";
   document.getElementById('content-instructions').innerHTML = '<h2>When instructed, press Next to begin.</h2>';
@@ -63,8 +63,8 @@ var next = function(id) {
         showI();
         $('#button-next').hide();
         document.getElementById('content-instructions').innerHTML = '<object type="text/html" style="width:700px;" data="postPrescreen.html" ></object>';
-        if(testing) { next(3); }
-        else { (function() { next(3) }, 2000); }
+        if(!testing) { t=2000; }
+        setTimeout(function() { next(3) }, t);
         break;
       case 3: // Display pre-screen results screen
         clearScreen(4);

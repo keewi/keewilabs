@@ -33,6 +33,7 @@ var runActivities = function() {
   if (progress.gameID > 3) { console.log("Done with all the activities!"); next(7); return; }
   currActivity = condition.activityOrder[progress.gameID];
   progress.page = 100;
+  progress.trialID = 0;
   progress.stage = currActivity;
   progress.trialsLeft = 10;
   if (testing) { progress.trialsLeft = 2; }

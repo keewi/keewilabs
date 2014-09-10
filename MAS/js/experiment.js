@@ -43,6 +43,7 @@ var progress = {
 	page: 0,
 	stage: 0,
 	gameID: 0,
+	trialID: 0,
 	trialsLeft: 0,
 	practice: false
 };
@@ -100,13 +101,13 @@ var plusScreen = function() {
 var gameScreen = function() {
 	showT();
     $('#button-next').hide();
-	document.getElementById('content-text').innerHTML = '<img src="img/dots1.png">';
+    console.log("Showing img with ID: "+progress.trialID);
+	document.getElementById('content-text').innerHTML = '<img src="img/dots'+progress.trialID+'.png">';
 	if (!testing) { t=2000; }
 	setTimeout(function() { gameplay(302) }, t);
 };
 
 var gameplay = function(page, practice) {
-	console.log("Trials left: " + progress.trialsLeft);
 	switch (page) {
 		case 300:
 			plusScreen();
@@ -117,6 +118,7 @@ var gameplay = function(page, practice) {
 			break;
 		case 302:
 		    $('#button-next').show();
+			progress.trialID += 1;
 			if (progress.practice) {
 				runActivity(103);
 			}
@@ -140,6 +142,7 @@ var runActivity = function () {
 	/* Page: which page in the activity it is
 	** stage: which game it is
 	** gameID: how many games you've done + 1 (which game youre on)
+	** trialID: which game you're on where 0=practice and 1-10=scored
 	** trialsLeft: trials left 0 < x < 11
 	*/
 	switch (progress.page) {
